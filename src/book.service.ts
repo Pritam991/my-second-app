@@ -2,6 +2,7 @@
 
 import { Injectable } from "@nestjs/common";
 import { Book } from "./book/data/book.dto";
+import { v4 as uuid4 } from 'uuid';
 
 @Injectable()
 export class BookService {
@@ -9,6 +10,8 @@ export class BookService {
 
     // add book
     addBookService(book : Book) : string{
+        // id auto grnerated
+        book.id = uuid4();
         this.books.push(book);
         return 'Book has been sucessfully added';
     }
